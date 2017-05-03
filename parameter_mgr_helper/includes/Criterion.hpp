@@ -18,6 +18,7 @@
 #include <stdint.h>
 #include <inttypes.h>
 #include <string>
+#include <vector>
 
 class CParameterMgrPlatformConnector;
 class ISelectionCriterionInterface;
@@ -128,4 +129,37 @@ private:
     std::string mName; /**< name of the criterion. */
 
     uint32_t mValue; /**< value of the criterion. */
+};
+
+class Criteria : public std::vector<Criterion *>
+{
+public:
+    Criterion *getByName(const std::string &name)
+    {
+        for (auto criterion : *this) {
+            if (criterion->getName() == name) {
+                return criterion;
+            }
+        }
+        return nullptr;
+    }
+
+    const Criterion *getByName(const std::string &name) const
+    {
+        for (const auto &criterion : *this) {
+            if (criterion->getName() == name) {
+                return criterion;
+            }
+        }
+        return nullptr;
+    }
+
+    bool add(Criterion *criterion)
+    {
+        if (getByName(criterion->getName()) != nullptr) {
+            return false;
+        }
+        push_back(criterion);
+        return true;
+    }
 };
