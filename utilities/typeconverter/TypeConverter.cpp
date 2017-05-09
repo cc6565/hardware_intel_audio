@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2017 Intel Corporation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 #include "TypeConverter.hpp"
 
-namespace intel_audio
+namespace audio_hal
 {
 
 template <>
@@ -334,4 +334,4 @@ template class TypeConverter<InputSourceTraits>;
 template class TypeConverter<DefaultTraits<audio_port_role_t> >;
 template class TypeConverter<DefaultTraits<audio_port_type_t>>;
 
-}  // namespace intel_audio
+}  // namespace audio_hal

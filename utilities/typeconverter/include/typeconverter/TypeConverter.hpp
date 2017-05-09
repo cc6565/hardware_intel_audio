@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2017 Intel Corporation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@
 #include <AudioUtilitiesAssert.hpp>
 #include <assert.h>
 
-namespace intel_audio
+namespace audio_hal
 {
 
 /**
@@ -248,4 +248,4 @@ static std::vector<OutputChannelTraits::Type> outputChannelMasksFromString(const
     return outputChannelMaskCollection;
 }
 
-}  // namespace intel_audio
+}  // namespace audio_hal

@@ -26,7 +26,7 @@
 using namespace std;
 using audio_utilities::utilities::Log;
 
-namespace intel_audio
+namespace audio_hal
 {
 
 bool StreamRouteConfig::supportSampleSpec(const SampleSpec &spec) const
@@ -199,4 +199,4 @@ android::status_t StreamRouteConfig::dump(const int fd, int spaces) const
     return android::OK;
 }
 
-} // namespace intel_audio
+} // namespace audio_hal
