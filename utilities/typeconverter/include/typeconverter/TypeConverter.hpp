@@ -32,7 +32,7 @@ namespace audio_hal
 /**
  * Introduce a primary flag for input as well to manage route applicability for stream symetrically.
  */
-static const audio_input_flags_t AUDIO_INPUT_FLAG_PRIMARY = static_cast<audio_input_flags_t>(AUDIO_INPUT_FLAG_SYNC << 1);
+static const audio_input_flags_t AUDIO_INPUT_FLAG_PRIMARY = static_cast<audio_input_flags_t>(AUDIO_INPUT_FLAG_VOIP_TX << 1);
 
 struct SampleRateTraits
 {
