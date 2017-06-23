@@ -310,6 +310,39 @@ std::string TypeConverter<Traits>::maskToString(uint32_t mask, const char *del)
 }
 
 template <>
+uint32_t TypeConverter<InputSourceTraits>::maskFromString(const std::string &str, const char *del)
+ {
+    uint32_t mask = 0;
+    char *literal = strdup(str.c_str());
+    for (const char *cstr = strtok(literal, del); cstr != NULL; cstr = strtok(NULL, del)) {
+        audio_source_t type;
+        if (not toEnum(cstr, type)) {
+            free(literal);
+            return 0;
+        }
+        mask |= (1 << static_cast<uint32_t>(type));
+    }
+    free(literal);
+    return mask;
+}
+
+
+template <>
+std::string TypeConverter<InputSourceTraits>::maskToString(uint32_t mask, const char *del)
+{
+    std::string formattedMasks;
+    for (const auto &candidate : mTypeConversion) {
+        if ((mask & (1 << candidate.second)) == (1 << candidate.second)) {
+            if (not formattedMasks.empty()) {
+                formattedMasks += del;
+	    }
+            formattedMasks +=  candidate.first;
+	}
+    }
+    return formattedMasks;
+}
+
+template <>
 std::string TypeConverter<DeviceTraits>::maskToString(uint32_t mask, const char *del)
 {
     std::string literalDevices;
